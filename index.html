@@ -4,89 +4,89 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chetan Parmar | @ChetanParmarHQ</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #f0f0f0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(-45deg, #1f2c3c, #2b4459, #1f2c3c);
+      background-size: 600% 600%;
+      animation: gradientShift 15s ease infinite;
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+      height: 100vh;
       text-align: center;
     }
 
-    h1 {
-      font-size: 2.2em;
-      margin: 0;
+    h1, p {
+      margin: 0.5em 0;
     }
 
-    .username {
-      font-weight: 600;
-      color: #00d9ff;
-      margin-top: 5px;
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .social-icons {
+      margin-top: 20px;
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
       gap: 20px;
-      margin: 30px 0;
+      justify-content: center;
     }
 
     .social-icons a {
-      color: white;
+      color: #ffffff;
       font-size: 1.8em;
-      transition: transform 0.2s ease;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .social-icons a:hover {
-      transform: scale(1.2);
-      color: #00d9ff;
+      transform: scale(1.3);
+      color: #00bfff;
     }
 
     footer {
-      margin-top: 40px;
+      position: absolute;
+      bottom: 20px;
       font-size: 0.9em;
-      color: #aaa;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.6em;
-      }
-
-      .social-icons a {
-        font-size: 1.5em;
-      }
+      color: #ccc;
     }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="fade-in">
+    <h1>Hello, I'm Chetan Parmar</h1>
+    <p class="fade-in" style="animation-delay: 0.4s;">a.k.a <strong>@ChetanParmarHQ</strong></p>
 
-  <!-- Name and Handle -->
-  <h1>Hello, I'm Chetan Parmar</h1>
-  <p class="username">a.k.a <strong>@ChetanParmarHQ</strong></p>
-
-  <!-- Social Icons -->
-  <div class="social-icons">
-    <a href="https://www.linkedin.com/in/chetanparmarhq" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://twitter.com/chetanparmarhq" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-    <a href="https://instagram.com/chetanparmarhq" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://github.com/chetanparmarhq" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://youtube.com/@chetanparmarhq" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://t.me/chetanparmarhq" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+    <div class="social-icons fade-in" style="animation-delay: 0.8s;">
+      <a href="https://www.linkedin.com/in/chetanparmar" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://twitter.com/ChetanParmarHQ" target="_blank" aria-label="Twitter">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://github.com/chetanparmarhq" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
+  <footer class="fade-in" style="animation-delay: 1.2s;">
     © 2025 Chetan Parmar. All rights reserved.
   </footer>
-
 </body>
 </html>
