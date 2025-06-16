@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chetan Parmar | @ChetanParmarHQ</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
     
     :root {
-      --primary: #00d9ff;
-      --dark-bg: #0f2027;
-      --text: #f0f0f0;
+      --primary-color: #00d9ff;
+      --secondary-color: #2c5364;
+      --text-color: #f0f0f0;
     }
     
     * {
@@ -21,134 +21,366 @@
     }
     
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: var(--text);
-      min-height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+      background-size: 400% 400%;
+      color: var(--text-color);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
       padding: 20px;
       text-align: center;
+      animation: gradientPulse 15s ease infinite;
+      overflow-x: hidden;
+      position: relative;
       line-height: 1.6;
     }
+
+    @keyframes gradientPulse {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
     
-    .container {
+    .content {
+      max-width: 800px;
       width: 100%;
-      max-width: 600px;
       padding: 2rem;
+      position: relative;
+      z-index: 1;
     }
     
     h1 {
       font-size: clamp(1.8rem, 5vw, 2.5rem);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      animation: fadeIn 0.8s ease-out;
+      margin: 0;
+      animation: fadeInDown 0.8s ease-out both;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      font-weight: 700;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
     
     .username {
-      color: var(--primary);
-      font-weight: 500;
-      margin-bottom: 1.5rem;
-      display: block;
-      animation: fadeIn 0.8s ease-out 0.2s both;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin: 1rem 0 2rem;
+      display: inline-block;
+      text-shadow: 0 0 15px rgba(0, 217, 255, 0.4);
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+      position: relative;
+      font-size: 1.2rem;
     }
     
-    .email {
-      display: inline-flex;
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    
+    .social-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
       align-items: center;
-      gap: 10px;
-      margin: 1.5rem 0 2.5rem;
-      padding: 12px 20px;
-      background: rgba(0, 217, 255, 0.1);
-      border-radius: 30px;
-      border: 1px solid rgba(0, 217, 255, 0.3);
-      text-decoration: none;
+      width: 100%;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      width: 100%;
+    }
+    
+    .social-icons a, .email-btn {
       color: white;
-      font-size: clamp(0.9rem, 3vw, 1.1rem);
-      animation: fadeIn 0.8s ease-out 0.4s both;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: scale(0);
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      text-decoration: none;
+    }
+    
+    .social-icons a {
+      font-size: 1.8rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .email-btn {
+      gap: 12px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    
+    .email-icon {
+      font-size: 1.4em;
+      transform: translateY(-1px);
+      transition: transform 0.3s ease;
+    }
+    
+    .email-text {
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0); }
+      80% { transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    
+    .social-icons a::after, .email-btn::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      border: 2px solid var(--primary-color);
+      opacity: 0;
+      transform: scale(0.8);
       transition: all 0.3s ease;
+      pointer-events: none;
     }
     
-    .email:hover {
-      background: rgba(0, 217, 255, 0.2);
-      transform: scale(1.05);
+    .social-icons a:hover, .email-btn:hover {
+      transform: scale(1.1);
+      color: var(--primary-color);
+      text-shadow: 0 0 20px currentColor;
+      background: rgba(0, 217, 255, 0.15);
+      cursor: pointer;
     }
     
-    .email i {
-      font-size: 1.2em;
+    .email-btn:hover .email-icon {
+      transform: translateY(-1px) scale(1.1);
     }
+    
+    .social-icons a:hover::after, .email-btn:hover::after {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    
+    /* Animation delays */
+    .social-icons a:nth-child(1) { animation-delay: 0.5s; }
+    .social-icons a:nth-child(2) { animation-delay: 0.7s; }
+    .social-icons a:nth-child(3) { animation-delay: 0.9s; }
+    .email-btn { animation-delay: 1.1s; }
     
     footer {
-      margin-top: auto;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       padding: 1rem;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: rgba(255, 255, 255, 0.6);
-      animation: fadeIn 0.8s ease-out 0.6s both;
+      background: linear-gradient(to top, rgba(15, 32, 39, 0.8), transparent);
+      backdrop-filter: blur(5px);
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+      z-index: 10;
     }
     
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     
-    /* Mobile-specific adjustments */
-    @media (max-width: 480px) {
-      .container {
-        padding: 1.5rem;
-      }
-      
+    /* Notification for copied email */
+    .copy-notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+      font-size: 0.9rem;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .copy-notification.show {
+      opacity: 1;
+    }
+    
+    /* Particles background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(200, 225, 255, 0.4);
+      border-radius: 50%;
+      animation: float-particle linear infinite;
+      filter: blur(0.5px);
+    }
+    
+    @keyframes float-particle {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.4; }
+      90% { opacity: 0.4; }
+      100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+    }
+    
+    @media (max-width: 600px) {
       h1 {
-        font-size: 1.6rem;
+        white-space: normal;
+        line-height: 1.3;
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
       }
       
-      .username {
-        font-size: 0.95rem;
-        margin-bottom: 1.2rem;
+      .content {
+        padding: 1rem;
       }
       
-      .email {
-        padding: 10px 16px;
-        margin: 1.2rem 0 2rem;
-        font-size: 0.9rem;
+      .social-icons {
+        gap: 1rem;
+      }
+      
+      .social-icons a {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+      
+      .email-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+        width: 100%;
+      }
+      
+      .email-icon {
+        font-size: 1.3em;
       }
       
       footer {
-        font-size: 0.7rem;
+        padding: 0.8rem;
+        font-size: 0.8rem;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Hello, I'm Chetan Parmar</h1>
-    <span class="username">a.k.a @ChetanParmarHQ</span>
-    
-    <a href="mailto:chetan@chetanparmar.com" class="email">
-      <i class="fas fa-envelope"></i>
-      chetan@chetanparmar.com
-    </a>
+  <div class="particles" id="particles"></div>
+  <div class="copy-notification" id="copyNotification">
+    <i class="fas fa-check-circle"></i> Email copied to clipboard!
   </div>
   
+  <div class="content">
+    <!-- Name and Handle -->
+    <h1>Hello, I'm Chetan Parmar</h1>
+    <p class="username">a.k.a <strong>@ChetanParmarHQ</strong></p>
+
+    <!-- Social Icons and Email -->
+    <div class="social-container">
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/chetanparmarhq" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com/chetanparmarhq" target="_blank" title="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/chetanparmarhq" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      
+      <a class="email-btn" id="emailBtn" title="Email Me">
+        <i class="fas fa-envelope email-icon"></i>
+        <span class="email-text">chetan@chetanparmar.com</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     © 2025 Chetan Parmar. All rights reserved.
   </footer>
 
   <script>
-    // Copy email to clipboard when clicked
-    document.querySelector('.email').addEventListener('click', function(e) {
-      e.preventDefault();
-      navigator.clipboard.writeText('chetan@chetanparmar.com');
+    // Create particles
+    document.addEventListener('DOMContentLoaded', function() {
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = window.innerWidth < 600 ? 15 : 25;
       
-      // Optional: Show a brief notification
-      const originalText = this.innerHTML;
-      this.innerHTML = '<i class="fas fa-check"></i> Copied to clipboard!';
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random size between 1px and 2px
+        const size = Math.random() * 1 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.top = `${Math.random() * 100 + 100}vh`;
+        
+        // Random animation duration between 15s and 25s
+        const duration = 15 + Math.random() * 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay
+        particle.style.animationDelay = `${Math.random() * 5}s`;
+        
+        particlesContainer.appendChild(particle);
+      }
+
+      // Email button functionality
+      const emailBtn = document.getElementById('emailBtn');
+      const copyNotification = document.getElementById('copyNotification');
       
-      setTimeout(() => {
-        this.innerHTML = originalText;
-        window.location.href = 'mailto:chetan@chetanparmar.com';
-      }, 1500);
+      emailBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Copy to clipboard
+        navigator.clipboard.writeText('chetan@chetanparmar.com').then(() => {
+          // Show notification
+          copyNotification.classList.add('show');
+          setTimeout(() => {
+            copyNotification.classList.remove('show');
+          }, 2000);
+        });
+        
+        // Open mail client after slight delay
+        setTimeout(() => {
+          window.location.href = 'mailto:chetan@chetanparmar.com';
+        }, 300);
+      });
     });
   </script>
 </body>
