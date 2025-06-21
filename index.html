@@ -39,7 +39,7 @@
       line-height: 1.6;
     }
 
-    /* Updated Header Styles with Cyberpunk Logo */
+    /* Header Styles */
     header {
       position: fixed;
       top: 0;
@@ -85,7 +85,6 @@
       transition: all 0.3s ease;
     }
 
-    /* Key glow animation */
     @keyframes glow-pulse {
       0% { 
         opacity: 0.9;
@@ -238,7 +237,6 @@
       }
     }
 
-    /* Existing styles below remain unchanged */
     @keyframes gradientPulse {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -251,10 +249,9 @@
       padding: 2rem;
       position: relative;
       z-index: 1;
-      margin-top: 80px; /* Added to account for fixed header */
+      margin-top: 80px;
     }
 
-    /* Profile Picture Styles */
     .profile-pic {
       width: 150px;
       height: 150px;
@@ -442,6 +439,7 @@
       font-size: 0.9rem;
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
     }
     
     .copy-notification.show {
@@ -456,9 +454,9 @@
       transform: translate(-50%, -50%);
       background: rgba(0, 0, 0, 0.8);
       color: var(--primary-color);
-      padding: 20px 40px;
-      border-radius: 10px;
-      font-size: 1.2rem;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 1rem;
       z-index: 1000;
       opacity: 0;
       transition: opacity 0.3s;
@@ -466,8 +464,27 @@
       border: 1px solid rgba(0, 217, 255, 0.3);
       box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
       pointer-events: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
-    
+
+    @media (min-width: 601px) {
+      .coming-soon {
+        padding: 15px 30px;
+        font-size: 1.2rem;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .coming-soon {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+      }
+    }
+
     .coming-soon.show {
       opacity: 1;
     }
@@ -542,11 +559,6 @@
       footer {
         padding: 0.8rem;
         font-size: 0.8rem;
-      }
-
-      .coming-soon {
-        padding: 15px 30px;
-        font-size: 1rem;
       }
     }
 
@@ -703,6 +715,10 @@
       navItems.forEach(item => {
         item.addEventListener('click', function(e) {
           e.preventDefault();
+          
+          // Update notification text to ensure it's one line
+          comingSoon.innerHTML = '<i class="fas fa-rocket"></i><span>Coming Soon!</span>';
+          
           comingSoon.classList.add('show');
           setTimeout(() => {
             comingSoon.classList.remove('show');
